@@ -1,0 +1,37 @@
+Name,EntityID
+aerial image,AerialImage
+AerialImage,AerialImage
+audio,Audio
+Audio,Audio
+color texture,ColorTexture
+ColorTexture,ColorTexture
+dataset,Dataset
+Dataset,Dataset
+geometry 3 d,Geometry3D
+Geometry3D,Geometry3D
+linear programming,LinearProgramming
+LinearProgramming,LinearProgramming
+machine learning,MachineLearning
+MachineLearning,MachineLearning
+matrix,Matrix
+Matrix,Matrix
+network graph,NetworkGraph
+NetworkGraph,NetworkGraph
+sound,Sound
+Sound,Sound
+spatial point data,SpatialPointData
+SpatialPointData,SpatialPointData
+statistics,Statistics
+Statistics,Statistics
+test animation,TestAnimation
+TestAnimation,TestAnimation
+test image,TestImage
+TestImage,TestImage
+test image 3 d,TestImage3D
+TestImage3D,TestImage3D
+test image set,TestImageSet
+TestImageSet,TestImageSet
+text,Text
+Text,Text
+texture,Texture
+Texture,Texture

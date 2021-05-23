@@ -1,0 +1,46 @@
+{
+  "perl": "6.d",
+  "name": "DSL::Entity::Metadata",
+  "api": "1",
+  "auth": "github:antononcube",
+  "version": "0.1.0",
+  "description": "Grammars for metadata entities: data types, column names, schema names, etc.",
+  "authors": [
+    "Anton Antonov"
+  ],
+  "license": "Artistic-2.0",
+  "provides": {
+    "DSL::Entity::Metadata": "lib/DSL/Entity/Metadata.rakumod",
+    "DSL::Entity::Metadata::ResourceAccess": "lib/DSL/Entity/Metadata/ResourceAccess.rakumod",
+    "DSL::Entity::Metadata::Grammar": "lib/DSL/Entity/Metadata/Grammar.rakumod",
+    "DSL::Entity::Metadata::Grammar::EntityNames": "lib/DSL/Entity/Metadata/Grammar/EntityNames.rakumod",
+    "DSL::Entity::Metadata::Actions::Bulgarian::Standard": "lib/DSL/Entity/Metadata/Actions/Bulgarian/Standard.rakumod",
+    "DSL::Entity::Metadata::Actions::WL::Entity": "lib/DSL/Entity/Metadata/Actions/WL/Entity.rakumod",
+    "DSL::Entity::Metadata::Actions::WL::System": "lib/DSL/Entity/Metadata/Actions/WL/System.rakumod"
+  },
+  "depends": [
+    "DSL::Shared"
+  ],
+  "build-depends": [],
+  "test-depends": [],
+  "resources": [
+    "TypeChildIDToParentID.csv",
+    "TypeNameToEntityID_EN.csv",
+    "DatasetCategoryNameToEntityID_EN.csv",
+    "DatasetIDToCategoryID.csv",
+    "DatasetNameToEntityID_EN.csv"
+  ],
+  "tags": [
+    "data",
+    "dataset",
+    "entity",
+    "interpreter",
+    "meta",
+    "metadata",
+    "ner",
+    "parser",
+    "schema",
+    "type"
+  ],
+  "source-url": "https://github.com/antononcube/Raku-DSL-Entity-Metadata.git"
+}
