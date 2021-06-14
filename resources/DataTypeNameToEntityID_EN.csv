@@ -3,30 +3,42 @@ categorical,Categorical
 Categorical,Categorical
 complete cases,CompleteCases
 CompleteCases,CompleteCases
+event,EventData
 event data,EventData
 EventData,EventData
 event series,EventSeries
 EventSeries,EventSeries
 hierarchical,Hierarchical
 Hierarchical,Hierarchical
+long form,LongForm
+LongForm,LongForm
 multi dimensional,Multivariate
-multi-dimensional,Multivariate
 multidimensional,Multivariate
 Multidimensional,Multivariate
+MultiDimensional,Multivariate
 multi variate,Multivariate
-multi-variate,Multivariate
 multivariate,Multivariate
 Multivariate,Multivariate
+MultiVariate,Multivariate
 multivariate sample,MultivariateSample
 MultivariateSample,MultivariateSample
+narrow form,NarrowForm
+NarrowForm,NarrowForm
 nominal,Nominal
 Nominal,Nominal
 numerical,Numerical
 Numerical,Numerical
+snowflake schema,SnowflakeSchema
+SnowflakeSchema,SnowflakeSchema
+spacial,SpacialData
 spacial data,SpacialData
 SpacialData,SpacialData
+sparse,Sparse
+Sparse,Sparse
 spatial data,SpatialData
 SpatialData,SpatialData
+star schema,StarSchema
+StarSchema,StarSchema
 survival data,SurvivalData
 SurvivalData,SurvivalData
 tabular,Tabular
@@ -37,9 +49,15 @@ textual,Textual
 Textual,Textual
 time series,TimeSeries
 TimeSeries,TimeSeries
+uni dimensional,Univariate
+UniDimensional,Univariate
+uni variate,UniVariate
 univariate,Univariate
 Univariate,Univariate
-univariate data,UnivariateData
-UnivariateData,UnivariateData
+UniVariate,Univariate
+univariate data,Univariate
+UnivariateData,Univariate
 univariate sample,UnivariateSample
 UnivariateSample,UnivariateSample
+wide form,WideForm
+WideForm,WideForm
