@@ -23,7 +23,7 @@ class DSL::Entity::Metadata::Actions::WL::System
 
     method entity-data-format-name($/) {
         my $nm = $resources.name-to-entity-id('DataFormat', $/.Str.lc, :!warn);
-        make $nm;
+        make '"' ~ $nm ~ '"';
     }
 
     method data-type-entity-command($/) {
@@ -32,7 +32,7 @@ class DSL::Entity::Metadata::Actions::WL::System
 
     method entity-data-type-name($/) {
         my $nm = $resources.name-to-entity-id('DataType', $/.Str.lc, :!warn);
-        make $nm;
+        make '"' ~ $nm ~ '"';
     }
 
     method dataset-entity-command($/) {
@@ -41,7 +41,7 @@ class DSL::Entity::Metadata::Actions::WL::System
 
     method entity-dataset-name($/) {
         my $nm = $resources.name-to-entity-id('Dataset', $/.Str.lc, :!warn);
-        make $nm;
+        make '"' ~ $nm ~ '"';
     }
 
     method metadata-entity-command($/) {
@@ -50,6 +50,6 @@ class DSL::Entity::Metadata::Actions::WL::System
 
     method entity-metadata-name($/) {
         my $nm = $resources.name-to-entity-id('MetadataType', $/.Str.lc, :!warn);
-        make $nm;
+        make  '"' ~ $nm ~ '"';
     }
 }
