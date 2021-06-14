@@ -24,6 +24,10 @@ role DSL::Entity::Metadata::Grammar::EntityNames
         ( [ << <word-value> >> ]+ % \h+ ) <?{ $resources.known-name('MetadataType', $0.Str.lc) }>
     }
 
+    regex entity-data-format-name {
+        ( [ <.wbpl> <entity-name-part> <.wbpr> ]+ % \h+ ) <?{ $resources.known-name('DataFormat', $0.Str.lc) }>
+    }
+
     regex entity-data-type-name {
         ( [ << <word-value> >> ]+ % \h+ ) <?{ $resources.known-name('DataType', $0.Str.lc) }>
     }

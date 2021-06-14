@@ -13,12 +13,15 @@ grammar DSL::Entity::Metadata::Grammar
         <pipeline-command> |
         <metadata-entity-command> |
         <dataset-entity-command> |
-        <data-type-entity-command> }
+        <data-type-entity-command> |
+        <data-format-entity-command> }
 
-    regex metadata-entity-command { <entity-metadata-name> }
+    regex data-format-entity-command { <entity-data-format-name> }
 
     regex data-type-entity-command { <entity-data-type-name> }
 
     regex dataset-entity-command { <entity-dataset-name> }
+
+    regex metadata-entity-command { <entity-metadata-name> }
 }
 
