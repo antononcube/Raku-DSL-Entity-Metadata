@@ -4,7 +4,7 @@ use DSL::Entity::Metadata;
 use Test;
 
 ##===========================================================
-## Country names
+## Metadata types
 ##===========================================================
 
 my $pCOMMAND = DSL::Entity::Metadata::Grammar;
