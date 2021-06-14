@@ -44,7 +44,7 @@ class DSL::Entity::Metadata::ResourceAccess {
         #say "Number of calls to .make $numberOfMakeCalls";
 
         #-----------------------------------------------------------
-        for <Type Dataset> -> $fn {
+        for <MetadataType DataType Dataset> -> $fn {
             my $fileName = %?RESOURCES{$fn ~ 'NameToEntityID_EN.csv'};
             my Str @nameIDPairs = $fileName.lines;
 

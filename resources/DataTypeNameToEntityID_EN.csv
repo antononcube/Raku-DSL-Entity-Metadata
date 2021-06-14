@@ -1,0 +1,39 @@
+Name,EntityID
+categorical,Categorical
+Categorical,Categorical
+complete cases,CompleteCases
+CompleteCases,CompleteCases
+event data,EventData
+EventData,EventData
+event series,EventSeries
+EventSeries,EventSeries
+hierarchical,Hierarchical
+Hierarchical,Hierarchical
+multivariate,Multivariate
+Multivariate,Multivariate
+multivariate sample,MultivariateSample
+MultivariateSample,MultivariateSample
+nominal,Nominal
+Nominal,Nominal
+numerical,Numerical
+Numerical,Numerical
+spacial data,SpacialData
+SpacialData,SpacialData
+spatial data,SpatialData
+SpatialData,SpatialData
+survival data,SurvivalData
+SurvivalData,SurvivalData
+tabular,Tabular
+Tabular,Tabular
+text,Text
+Text,Text
+textual,Textual
+Textual,Textual
+time series,TimeSeries
+TimeSeries,TimeSeries
+univariate,Univariate
+Univariate,Univariate
+univariate data,UnivariateData
+UnivariateData,UnivariateData
+univariate sample,UnivariateSample
+UnivariateSample,UnivariateSample

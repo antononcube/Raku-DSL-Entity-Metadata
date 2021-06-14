@@ -7,6 +7,7 @@ color texture,ColorTexture
 ColorTexture,ColorTexture
 dataset,Dataset
 Dataset,Dataset
+geometry 3d,Geometry3D
 geometry 3 d,Geometry3D
 Geometry3D,Geometry3D
 linear programming,LinearProgramming
@@ -28,6 +29,7 @@ TestAnimation,TestAnimation
 test image,TestImage
 TestImage,TestImage
 test image 3 d,TestImage3D
+test image 3d,TestImage3D
 TestImage3D,TestImage3D
 test image set,TestImageSet
 TestImageSet,TestImageSet

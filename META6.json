@@ -24,11 +24,12 @@
   "build-depends": [],
   "test-depends": [],
   "resources": [
-    "TypeChildIDToParentID.csv",
-    "TypeNameToEntityID_EN.csv",
+    "MetadataTypeChildIDToParentID.csv",
+    "MetadataTypeNameToEntityID_EN.csv",
     "DatasetCategoryNameToEntityID_EN.csv",
     "DatasetIDToCategoryID.csv",
-    "DatasetNameToEntityID_EN.csv"
+    "DatasetNameToEntityID_EN.csv",
+    "DataTypeNameToEntityID_EN.csv"
   ],
   "tags": [
     "data",

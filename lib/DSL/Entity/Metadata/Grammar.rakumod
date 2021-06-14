@@ -9,14 +9,16 @@ grammar DSL::Entity::Metadata::Grammar
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Entity::Metadata::Grammar::EntityNames {
     # TOP
-    rule TOP {
+    regex TOP {
         <pipeline-command> |
         <metadata-entity-command> |
-        <dataset-entity-command>
-    }
+        <dataset-entity-command> |
+        <data-type-entity-command> }
 
-    rule metadata-entity-command { <entity-metadata-name> }
+    regex metadata-entity-command { <entity-metadata-name> }
 
-    rule dataset-entity-command { <entity-dataset-name> }
+    regex data-type-entity-command { <entity-data-type-name> }
+
+    regex dataset-entity-command { <entity-dataset-name> }
 }
 
