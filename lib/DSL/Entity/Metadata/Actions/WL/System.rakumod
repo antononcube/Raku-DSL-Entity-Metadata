@@ -17,13 +17,22 @@ class DSL::Entity::Metadata::Actions::WL::System
         make $/.values[0].made;
     }
 
-    method metadata-entity-command($/) {
+    method data-format-entity-command($/) {
         make $/.values[0].made;
     }
 
-    method entity-metadata-name($/) {
-        my $nm = $resources.known-name('Metadata', $/.Str.lc, :!bool, :!warn);
-        make 'EntityClass["Metadata", "' ~ $nm.wordcase ~ '"]';
+    method entity-data-format-name($/) {
+        my $nm = $resources.name-to-entity-id('DataFormat', $/.Str.lc, :!warn);
+        make $nm;
+    }
+
+    method data-type-entity-command($/) {
+        make $/.values[0].made;
+    }
+
+    method entity-data-type-name($/) {
+        my $nm = $resources.name-to-entity-id('DataType', $/.Str.lc, :!warn);
+        make $nm;
     }
 
     method dataset-entity-command($/) {
@@ -31,8 +40,16 @@ class DSL::Entity::Metadata::Actions::WL::System
     }
 
     method entity-dataset-name($/) {
-        my $nm = $resources.known-name('Dataset', $/.Str.lc, :!bool, :!warn);
-        make 'ExampleData[{"' ~ $nm.wordcase ~ '"}]';
+        my $nm = $resources.name-to-entity-id('Dataset', $/.Str.lc, :!warn);
+        make $nm;
     }
 
+    method metadata-entity-command($/) {
+        make $/.values[0].made;
+    }
+
+    method entity-metadata-name($/) {
+        my $nm = $resources.name-to-entity-id('MetadataType', $/.Str.lc, :!warn);
+        make $nm;
+    }
 }
