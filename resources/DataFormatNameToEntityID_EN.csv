@@ -45,9 +45,9 @@ DOT,DOT
 d s,3DS
 DXF,DXF
 EPS,EPS
-expression j s o n,ExpressionJSON
+expression json,ExpressionJSON
 ExpressionJSON,ExpressionJSON
-expression m l,ExpressionML
+expression ml,ExpressionML
 ExpressionML,ExpressionML
 FASTA,FASTA
 FASTQ,FASTQ
@@ -57,30 +57,30 @@ FITS,FITS
 FLAC,FLAC
 FLV,FLV
 FMU,FMU
-geo j s o n,GeoJSON
+geo json,GeoJSON
 GeoJSON,GeoJSON
 GIF,GIF
 graph 6,Graph6
 Graph6,Graph6
 graphlet,Graphlet
 Graphlet,Graphlet
-graph m l,GraphML
+graph ml,GraphML
 GraphML,GraphML
 GXL,GXL
 GZIP,GZIP
 harwell boeing,HarwellBoeing
 HarwellBoeing,HarwellBoeing
 HDF,HDF
-h d f 5,HDF5
+hdf 5,HDF5
 HDF5,HDF5
 HEIF,HEIF
 HIN,HIN
 HTML,HTML
-h t m l fragment,HTMLFragment
+html fragment,HTMLFragment
 HTMLFragment,HTMLFragment
-h t t p request,HTTPRequest
+http request,HTTPRequest
 HTTPRequest,HTTPRequest
-h t t p response,HTTPResponse
+http response,HTTPResponse
 HTTPResponse,HTTPResponse
 ICNS,ICNS
 ICO,ICO
@@ -104,7 +104,7 @@ JavaProperties,JavaProperties
 java script expression,JavaScriptExpression
 JavaScriptExpression,JavaScriptExpression
 JPEG,JPEG
-j p e g 2000,JPEG2000
+jpeg 2000,JPEG2000
 JPEG2000,JPEG2000
 JSON,JSON
 JSONLD,JSONLD
@@ -115,7 +115,7 @@ list,List
 List,List
 LWO,LWO
 MAT,MAT
-math m l,MathML
+math ml,MathML
 MathML,MathML
 matroska,Matroska
 Matroska,Matroska
@@ -151,7 +151,7 @@ OFF,OFF
 ogg,Ogg
 Ogg,Ogg
 ONNX,ONNX
-o w l functional,OWLFunctional
+owl functional,OWLFunctional
 OWLFunctional,OWLFunctional
 pajek,Pajek
 Pajek,Pajek
@@ -174,7 +174,7 @@ quick time,QuickTime
 QuickTime,QuickTime
 raw bitmap,RawBitmap
 RawBitmap,RawBitmap
-raw j s o n,RawJSON
+raw json,RawJSON
 RawJSON,RawJSON
 RDFXML,RDFXML
 real 128,Real128
@@ -222,7 +222,6 @@ TGA,TGA
 TGF,TGF
 TIFF,TIFF
 tri g,TriG
-trig,TriG
 TriG,TriG
 TSV,TSV
 turtle,Turtle
@@ -260,7 +259,7 @@ x 3 d,X3D
 X3D,X3D
 XBM,XBM
 XHTML,XHTML
-xhtml math ml,XHTMLMathML
+x html math ml,XHTMLMathML
 XHTMLMathML,XHTMLMathML
 XLS,XLS
 XLSX,XLSX
