@@ -1,23 +1,16 @@
 use v6;
 
+use DSL::Entity::Metadata::ResourceAccess;
+use DSL::Shared::Entity::Grammar::EntityNames;
 use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Utilities::FuzzyMatching;
-use DSL::Entity::Metadata::ResourceAccess;
 
 my DSL::Entity::Metadata::ResourceAccess $resources.instance;
 
 role DSL::Entity::Metadata::Grammar::EntityNames
+        does DSL::Shared::Entity::Grammar::EntityNames
         does DSL::Shared::Roles::English::PipelineCommand {
 
-    token name-punct-char { '-' | '.' | '+' | '#' }
-
-    regex entity-name-part {
-        [ <.alnum> | <.name-punct-char> ]+ | <.alnum>
-    }
-
-    regex wbpl { <!after [ <alnum> | <name-punct-char> ]> <?before [ <alnum> | <name-punct-char> ]> }
-
-    regex wbpr { <?after [ <alnum> | <name-punct-char> ]> <!before [ <alnum> | <name-punct-char> ]> }
 
     # It is assumed that metadata types have only alpha-numeric characters.
     regex entity-metadata-name {

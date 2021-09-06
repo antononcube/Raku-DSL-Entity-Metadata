@@ -1,12 +1,14 @@
 use v6;
 
 use DSL::Entity::Metadata::Grammar;
-use DSL::Shared::Actions::English::WL::PipelineCommand;
 use DSL::Entity::Metadata::ResourceAccess;
+use DSL::Shared::Actions::English::WL::PipelineCommand;
+use DSL::Shared::Entity::Actions::WL::System;
 
 my DSL::Entity::Metadata::ResourceAccess $resources.instance;
 
 class DSL::Entity::Metadata::Actions::WL::System
+        is DSL::Shared::Entity::Actions::WL::System
         is DSL::Shared::Actions::English::WL::PipelineCommand {
 
     ##========================================================
@@ -50,6 +52,7 @@ class DSL::Entity::Metadata::Actions::WL::System
 
     method entity-metadata-name($/) {
         my $nm = $resources.name-to-entity-id('MetadataType', $/.Str.lc, :!warn);
-        make  '"' ~ $nm ~ '"';
+        with $nm { make '"' ~ $nm ~ '"' }
+        else { make 'MetadataType["Uknown"]' };
     }
 }
