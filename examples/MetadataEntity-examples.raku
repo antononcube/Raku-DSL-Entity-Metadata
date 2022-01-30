@@ -3,6 +3,9 @@ use lib '.';
 use DSL::Entity::Metadata;
 use DSL::Entity::Metadata::ResourceAccess;
 
+use Pretty::Table;
+use Data::Reshapers;
+
 #my DSL::Entity::Metadata::ResourceAccess $resource.instance;
 #
 #my DSL::Entity::Metadata::ResourceAccess $resource2.instance;
@@ -15,7 +18,8 @@ my $pCOMMAND = DSL::Entity::Metadata::Grammar;
 
 say $pCOMMAND.parse('datte time', rule => 'metadata-entity-command');
 
-say $pCOMMAND.parse('date time', rule => 'metadata-entity-command', actions => DSL::Entity::Metadata::Actions::WL::System).made;
+say $pCOMMAND.parse('date time', rule => 'metadata-entity-command',
+        actions => DSL::Entity::Metadata::Actions::WL::System).made;
 #
 #say $pCOMMAND.parse('u n human rights swedish', rule => 'dataset-entity-command');
 #
@@ -44,18 +48,18 @@ my @testCommands = (
 );
 
 
-my @targets = ('WL-Entity', 'WL-System');
+my @targets = ('WL-Entity', 'WL-System', 'Raku::System');
 
-for @testCommands -> $c {
-    say "=" x 30;
-    say $c;
-    for @targets -> $t {
-        say '-' x 30;
-        say $t;
-        say '-' x 30;
-        my $start = now;
-        my $res = ToMetadataEntityCode($c, $t);
-        say "time:", now - $start;
-        say $res;
-    }
-}
+my @tbl =
+        gather {
+            for @testCommands -> $c {
+                for @targets -> $t {
+                    my $start = now;
+                    my $res = ToMetadataEntityCode($c, $t);
+                    my $timing = now - $start;
+                    take %( command => $c, target => $t, :$timing, parsed => $res)
+                }
+            }
+        };
+
+say to-pretty-table(@tbl.sort({ -$_<timing> }));
