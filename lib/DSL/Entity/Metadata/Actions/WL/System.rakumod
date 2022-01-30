@@ -53,6 +53,6 @@ class DSL::Entity::Metadata::Actions::WL::System
     method entity-metadata-name($/) {
         my $nm = $resources.name-to-entity-id('MetadataType', $/.Str.lc, :!warn);
         with $nm { make '"' ~ $nm ~ '"' }
-        else { make 'MetadataType["Uknown"]' };
+        else { make 'MetadataType["Unknown"]' };
     }
 }
