@@ -6,7 +6,6 @@ use DSL::Entity::Metadata::ResourceAccess;
 use Pretty::Table;
 use Data::Reshapers;
 
-#my DSL::Entity::Metadata::ResourceAccess $resource.instance;
 #
 #my DSL::Entity::Metadata::ResourceAccess $resource2.instance;
 #
@@ -14,12 +13,16 @@ use Data::Reshapers;
 
 my $pCOMMAND = DSL::Entity::Metadata::Grammar;
 
+$pCOMMAND.set-resources(get-entity-resources-access-object());
+
 #use Grammar::Tracer;
 
 say $pCOMMAND.parse('datte time', rule => 'metadata-entity-command');
 
-say $pCOMMAND.parse('date time', rule => 'metadata-entity-command',
-        actions => DSL::Entity::Metadata::Actions::WL::System).made;
+say $pCOMMAND.parse('date time',
+        rule => 'metadata-entity-command',
+        actions => DSL::Entity::Metadata::Actions::WL::System.new(resources=>get-entity-resources-access-object())
+        ).made;
 #
 #say $pCOMMAND.parse('u n human rights swedish', rule => 'dataset-entity-command');
 #

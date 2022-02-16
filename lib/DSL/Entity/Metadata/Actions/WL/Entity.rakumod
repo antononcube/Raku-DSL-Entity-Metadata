@@ -4,10 +4,11 @@ use DSL::Entity::Metadata::Grammar;
 use DSL::Shared::Actions::English::WL::PipelineCommand;
 use DSL::Entity::Metadata::ResourceAccess;
 
-my DSL::Entity::Metadata::ResourceAccess $resources.instance;
 
 class DSL::Entity::Metadata::Actions::WL::Entity
         is DSL::Shared::Actions::English::WL::PipelineCommand {
+
+    has DSL::Entity::Metadata::ResourceAccess $.resources;
 
     ##========================================================
     ## Grammar methods
@@ -22,7 +23,7 @@ class DSL::Entity::Metadata::Actions::WL::Entity
     }
 
     method entity-data-format-name($/) {
-        my $nm = $resources.name-to-entity-id('DataFormat', $/.Str.lc, :!warn);
+        my $nm = $!resources.name-to-entity-id('DataFormat', $/.Str.lc, :!warn);
         make '"' ~ $nm ~ '"';
     }
 
@@ -31,7 +32,7 @@ class DSL::Entity::Metadata::Actions::WL::Entity
     }
 
     method entity-data-type-name($/) {
-        my $nm = $resources.name-to-entity-id('DataType', $/.Str.lc, :!warn);
+        my $nm = $!resources.name-to-entity-id('DataType', $/.Str.lc, :!warn);
         make '"' ~ $nm ~ '"';
     }
 
@@ -40,7 +41,7 @@ class DSL::Entity::Metadata::Actions::WL::Entity
     }
 
     method entity-dataset-name($/) {
-        my $nm = $resources.name-to-entity-id('Dataset', $/.Str.lc, :!warn);
+        my $nm = $!resources.name-to-entity-id('Dataset', $/.Str.lc, :!warn);
         make 'ExampleData[{"' ~ $nm.Str ~ '"}]';
     }
 
@@ -49,7 +50,7 @@ class DSL::Entity::Metadata::Actions::WL::Entity
     }
 
     method entity-metadata-name($/) {
-        my $nm = $resources.name-to-entity-id('MetadataType', $/.Str.lc, :!warn);
+        my $nm = $!resources.name-to-entity-id('MetadataType', $/.Str.lc, :!warn);
         make '"' ~ $nm ~ '"';
     }
 }

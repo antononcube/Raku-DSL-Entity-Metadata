@@ -8,6 +8,12 @@ use DSL::Entity::Metadata::Grammar::EntityNames;
 grammar DSL::Entity::Metadata::Grammar
         does DSL::Shared::Roles::ErrorHandling
         does DSL::Entity::Metadata::Grammar::EntityNames {
+
+    my DSL::Entity::Metadata::ResourceAccess $resources;
+
+    method get-resources(--> DSL::Entity::Metadata::ResourceAccess) { return $resources; }
+    method set-resources(DSL::Entity::Metadata::ResourceAccess $obj) { $resources = $obj; }
+
     # TOP
     regex TOP {
         <pipeline-command> |

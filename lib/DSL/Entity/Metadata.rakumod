@@ -25,6 +25,8 @@ use DSL::Entity::Metadata::Actions::WL::System;
 
 use DSL::Entity::Metadata::Actions::Bulgarian::Standard;
 
+use DSL::Entity::Metadata::ResourceAccess;
+
 #-----------------------------------------------------------
 my %targetToAction =
         "Mathematica"      => DSL::Entity::Metadata::Actions::WL::System,
@@ -53,6 +55,10 @@ my Str %targetToSeparator{Str} =
 my Str %targetToSeparator2{Str} = %targetToSeparator.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::').Str => $_.value.Str }).Hash;
 %targetToSeparator = |%targetToSeparator , |%targetToSeparator2;
 
+#-----------------------------------------------------------
+my DSL::Entity::Metadata::ResourceAccess $resourceObj;
+
+our sub get-entity-resources-access-object() is export { return $resourceObj; }
 
 #-----------------------------------------------------------
 sub has-semicolon (Str $word) {
@@ -66,7 +72,7 @@ multi ToMetadataEntityCode ( Str $command where not has-semicolon($command), Str
 
     die 'Unknown target.' unless %targetToAction{$target}:exists;
 
-    my $match = DSL::Entity::Metadata::Grammar.parse($command.trim, actions => %targetToAction{$target} );
+    my $match = DSL::Entity::Metadata::Grammar.parse($command.trim, actions => %targetToAction{$target}.new(resources => get-entity-resources-access-object()) );
     die 'Cannot parse the given command.' unless $match;
     return $match.made;
 }
@@ -88,4 +94,11 @@ multi ToMetadataEntityCode ( Str $command where has-semicolon($command), Str $ta
     @cmdLines = grep { $_.^name eq 'Str' }, @cmdLines;
 
     return @cmdLines.join( %targetToSeparator{$specTarget} ).trim;
+}
+
+#-----------------------------------------------------------
+$resourceObj := BEGIN {
+    my DSL::Entity::Metadata::ResourceAccess $obj .= new;
+    $obj.ingest-resource-files();
+    $obj
 }
