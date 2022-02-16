@@ -15,17 +15,16 @@ interpretation of natural language commands that specify metadata.
 
 unit module DSL::Entity::Metadata;
 
-use DSL::Shared::Utilities::FuzzyMatching;
-use DSL::Shared::Utilities::MetaSpecsProcessing;
+use DSL::Shared::Utilities::CommandProcessing;
 
 use DSL::Entity::Metadata::Grammar;
+use DSL::Entity::Metadata::ResourceAccess;
+
 use DSL::Entity::Metadata::Actions::Raku::System;
 use DSL::Entity::Metadata::Actions::WL::Entity;
 use DSL::Entity::Metadata::Actions::WL::System;
 
 use DSL::Entity::Metadata::Actions::Bulgarian::Standard;
-
-use DSL::Entity::Metadata::ResourceAccess;
 
 #-----------------------------------------------------------
 my %targetToAction =
@@ -47,9 +46,11 @@ my Str %targetToSeparator{Str} =
         "R-base"           => " ;\n",
         "Raku"             => " ;\n",
         "Raku-Ecosystem"   => " ;\n",
-        "Mathematica"      => " \\[DoubleLongRightArrow]\n",
-        "WL"               => " \\[DoubleLongRightArrow]\n",
-        "WL-System"        => " \\[DoubleLongRightArrow]\n",
+        "Raku-System"      => " ;\n",
+        "Mathematica"      => " ;\n",
+        "WL"               => " ;\n",
+        "WL-System"        => " ;\n",
+        "WL-Entity"        => " ;\n",
         "Bulgarian"        => "\n";
 
 my Str %targetToSeparator2{Str} = %targetToSeparator.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::').Str => $_.value.Str }).Hash;
@@ -61,39 +62,20 @@ my DSL::Entity::Metadata::ResourceAccess $resourceObj;
 our sub get-entity-resources-access-object() is export { return $resourceObj; }
 
 #-----------------------------------------------------------
-sub has-semicolon (Str $word) {
-    return defined index $word, ';';
-}
+proto ToMetadataEntityCode(Str $command, Str $target = 'WL-System', | ) is export {*}
 
-#-----------------------------------------------------------
-proto ToMetadataEntityCode(Str $command, Str $target = 'tidyverse' ) is export {*}
+multi ToMetadataEntityCode( Str $command, Str $target = 'WL-System', *%args ) {
 
-multi ToMetadataEntityCode ( Str $command where not has-semicolon($command), Str $target = 'WL' ) {
+    my $pCOMMAND = DSL::Entity::Metadata::Grammar;
+    $pCOMMAND.set-resources(get-entity-resources-access-object());
 
-    die 'Unknown target.' unless %targetToAction{$target}:exists;
+    my $ACTOBJ = %targetToAction{$target}.new(resources => get-entity-resources-access-object());
 
-    my $match = DSL::Entity::Metadata::Grammar.parse($command.trim, actions => %targetToAction{$target}.new(resources => get-entity-resources-access-object()) );
-    die 'Cannot parse the given command.' unless $match;
-    return $match.made;
-}
-
-multi ToMetadataEntityCode ( Str $command where has-semicolon($command), Str $target = 'WL' ) {
-
-    my $specTarget = get-dsl-spec( $command, 'target');
-
-    $specTarget = $specTarget ?? $specTarget<DSLTARGET> !! $target;
-
-    die 'Unknown target.' unless %targetToAction{$specTarget}:exists;
-
-    my @commandLines = $command.trim.split(/ ';' \s* /);
-
-    @commandLines = grep { $_.Str.chars > 0 }, @commandLines;
-
-    my @cmdLines = map { ToMetadataEntityCode($_, $specTarget) }, @commandLines;
-
-    @cmdLines = grep { $_.^name eq 'Str' }, @cmdLines;
-
-    return @cmdLines.join( %targetToSeparator{$specTarget} ).trim;
+    DSL::Shared::Utilities::CommandProcessing::ToWorkflowCode( $command,
+                                                               grammar => $pCOMMAND,
+                                                               actions => $ACTOBJ,
+                                                               separator => %targetToSeparator{$target},
+                                                               |%args )
 }
 
 #-----------------------------------------------------------
