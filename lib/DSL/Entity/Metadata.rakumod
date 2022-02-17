@@ -39,31 +39,20 @@ my %targetToAction =
 my %targetToAction2{Str} = %targetToAction.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::').Str => $_.value }).Hash;
 %targetToAction = |%targetToAction , |%targetToAction2;
 
-my Str %targetToSeparator{Str} =
-        "Julia"            => "\n",
-        "Julia-DataFrames" => "\n",
-        "R"                => " ;\n",
-        "R-base"           => " ;\n",
-        "Raku"             => " ;\n",
-        "Raku-Ecosystem"   => " ;\n",
-        "Raku-System"      => " ;\n",
-        "Mathematica"      => " ;\n",
-        "WL"               => " ;\n",
-        "WL-System"        => " ;\n",
-        "WL-Entity"        => " ;\n",
-        "Bulgarian"        => "\n";
-
-my Str %targetToSeparator2{Str} = %targetToSeparator.grep({ $_.key.contains('-') }).map({ $_.key.subst('-', '::').Str => $_.value.Str }).Hash;
-%targetToSeparator = |%targetToSeparator , |%targetToSeparator2;
+#| Target to separators rules
+my Str %targetToSeparator{Str} = DSL::Shared::Utilities::CommandProcessing::target-separator-rules();
 
 #-----------------------------------------------------------
 my DSL::Entity::Metadata::ResourceAccess $resourceObj;
 
+#| Get the resources access object.
 our sub get-entity-resources-access-object() is export { return $resourceObj; }
 
 #-----------------------------------------------------------
+#| Named entity recognition for metadata. (proto)
 proto ToMetadataEntityCode(Str $command, Str $target = 'WL-System', | ) is export {*}
 
+#| Named entity recognition for metadata
 multi ToMetadataEntityCode( Str $command, Str $target = 'WL-System', *%args ) {
 
     my $pCOMMAND = DSL::Entity::Metadata::Grammar;
