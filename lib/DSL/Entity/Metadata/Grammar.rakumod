@@ -1,8 +1,5 @@
-use v6;
-
-use DSL::Shared::Roles::PredicateSpecification;
 use DSL::Shared::Roles::ErrorHandling;
-
+use DSL::Entity::Metadata::ResourceAccess;
 use DSL::Entity::Metadata::Grammar::EntityNames;
 
 grammar DSL::Entity::Metadata::Grammar
