@@ -8,7 +8,7 @@ use Test;
 ##===========================================================
 
 my $pCOMMAND = DSL::Entity::Metadata::Grammar;
-$pCOMMAND.set-resources(get-entity-resources-access-object());
+$pCOMMAND.set-resources(DSL::Entity::Metadata::resource-access-object());
 
 plan 8;
 

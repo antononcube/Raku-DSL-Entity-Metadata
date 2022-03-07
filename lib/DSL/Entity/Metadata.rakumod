@@ -46,7 +46,7 @@ my Str %targetToSeparator{Str} = DSL::Shared::Utilities::CommandProcessing::targ
 my DSL::Entity::Metadata::ResourceAccess $resourceObj;
 
 #| Get the resources access object.
-our sub get-entity-resources-access-object() is export { return $resourceObj; }
+our sub resource-access-object(--> DSL::Entity::Metadata::ResourceAccess) { return $resourceObj; }
 
 #-----------------------------------------------------------
 #| Named entity recognition for metadata. (proto)
@@ -56,9 +56,9 @@ proto ToMetadataEntityCode(Str $command, Str $target = 'WL-System', | ) is expor
 multi ToMetadataEntityCode( Str $command, Str $target = 'WL-System', *%args ) {
 
     my $pCOMMAND = DSL::Entity::Metadata::Grammar;
-    $pCOMMAND.set-resources(get-entity-resources-access-object());
+    $pCOMMAND.set-resources(DSL::Entity::Metadata::resource-access-object());
 
-    my $ACTOBJ = %targetToAction{$target}.new(resources => get-entity-resources-access-object());
+    my $ACTOBJ = %targetToAction{$target}.new(resources => DSL::Entity::Metadata::resource-access-object());
 
     DSL::Shared::Utilities::CommandProcessing::ToWorkflowCode( $command,
                                                                grammar => $pCOMMAND,
