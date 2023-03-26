@@ -1,5 +1,4 @@
-use lib './lib';
-use lib '.';
+
 use DSL::Entity::Metadata;
 use DSL::Entity::Metadata::ResourceAccess;
 
