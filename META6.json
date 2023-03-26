@@ -1,14 +1,14 @@
 {
   "name": "DSL::Entity::Metadata",
-  "description": "Grammars for metadata entities: data types, column names, schema names, etc.",
+  "description": "Grammar and role for metadata entities: data types, column names, schema names, etc.",
   "version": "0.1.0",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
   ],
-  "auth": "github:antononcube",
+  "auth": "zef:antononcube",
   "depends": [
-    "DSL::Shared:ver<0.1.2+>"
+    "DSL::Shared:ver<0.1.8+>"
   ],
   "build-depends": [],
   "test-depends": [],
