@@ -35,35 +35,13 @@ $pCOMMAND.set-resources(DSL::Entity::Metadata::resource-access-object());
 
 say $pCOMMAND.parse('DateTime');
 ```
-```
-# ｢DateTime｣
-#  metadata-entity-command => ｢DateTime｣
-#   entity-metadata-name => ｢DateTime｣
-#    0 => ｢DateTime｣
-#     word-value => ｢DateTime｣
-```
 
 ```perl6
 say $pCOMMAND.parse('time series');
 ```
-```
-# ｢time series｣
-#  data-type-entity-command => ｢time series｣
-#   entity-data-type-name => ｢time series｣
-#    0 => ｢time series｣
-#     word-value => ｢time｣
-#     word-value => ｢series｣
-```
 
 ```perl6
 say $pCOMMAND.parse('Titanic');
-```
-```
-# ｢Titanic｣
-#  dataset-entity-command => ｢Titanic｣
-#   entity-dataset-name => ｢Titanic｣
-#    0 => ｢Titanic｣
-#     entity-name-part => ｢Titanic｣
 ```
 
 ------
