@@ -1,10 +1,15 @@
+use DSL::Entity::Metadata::Grammar::EntityNames;
+use DSL::Entity::Metadata::ResourceAccess;
+use DSL::Shared::Roles::English::PipelineCommand;
 use DSL::Shared::Roles::ErrorHandling;
 use DSL::Entity::Metadata::ResourceAccess;
-use DSL::Entity::Metadata::Grammar::EntityNames;
+use DSL::Shared::Entity::Grammar::EntityNames;
 
 grammar DSL::Entity::Metadata::Grammar
-        does DSL::Shared::Roles::ErrorHandling
-        does DSL::Entity::Metadata::Grammar::EntityNames {
+        does DSL::Entity::Metadata::Grammar::EntityNames
+        does DSL::Shared::Entity::Grammar::EntityNames
+        does DSL::Shared::Roles::English::PipelineCommand
+        does DSL::Shared::Roles::ErrorHandling {
 
     my DSL::Entity::Metadata::ResourceAccess $resources;
 

@@ -1,11 +1,5 @@
-use DSL::Entity::Metadata::ResourceAccess;
-use DSL::Shared::Entity::Grammar::EntityNames;
-use DSL::Shared::Roles::English::PipelineCommand;
-use DSL::Shared::Utilities::FuzzyMatching;
 
-role DSL::Entity::Metadata::Grammar::EntityNames
-        does DSL::Shared::Entity::Grammar::EntityNames
-        does DSL::Shared::Roles::English::PipelineCommand {
+role DSL::Entity::Metadata::Grammar::EntityNames {
 
     # It is assumed that metadata types have only alpha-numeric characters.
     regex entity-metadata-name {
